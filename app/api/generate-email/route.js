@@ -108,7 +108,7 @@ function fallbackEmail({ title, company, link, notes }) {
   return [
     `Dear Hiring Team${company ? ` at ${company}` : ''},`,
     `I’m Afaq Ahmad, a MERN/Next.js developer with 4 years of experience building reliable, secure, high-performance web apps. My core stack: React, Next.js, Node.js, Express, MongoDB, REST APIs. Applying for the ${title} role${company ? ` at ${company}` : ''}.`,
-    `Recent work:\n${recentWork}`,
+    // `Recent work:\n${recentWork}`,
     `My portfolio: https://afaq-resume.vercel.app/`,
     `I'm available immediately for full-time remote, contract, or onsite roles.${linkLine}${notesLine}`,
     `Best regards,\nAfaq Ahmad\nWhatsApp: +92 312 9113445\nEmail: ufaq148@gmail.com`,

@@ -66,50 +66,129 @@ function buildHtmlEmail({ subject, body }) {
     .trim()
     .split(/\n\s*\n|\n/)
     .filter(Boolean)
-    .map((line) => `<p style="margin:0 0 12px; line-height:1.6;">${escapeHtml(line)}</p>`)
+    .map((line) => `<p style="margin:0 0 10px; line-height:1.6;">${escapeHtml(line)}</p>`)
     .join('');
 
   return `<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>${escapeHtml(subject || 'Application')}</title>
+    <title>${escapeHtml(subject || 'Full Stack Developer – Afaq Ahmad')}</title>
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --card: #ffffff;
+        --primary: #0ea5e9;
+        --accent: #10b981;
+        --text: #0f172a;
+        --muted: #64748b;
+        --border: #e5e7eb;
+        --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 720px;
+        margin: 32px auto;
+        padding: 0 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .banner {
+        background: linear-gradient(135deg, #e0f2fe, #ecfdf3);
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      .banner h1 {
+        margin: 6px 0 0;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(16, 185, 129, 0.12);
+        color: #047857;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .content { padding: 24px; }
+      .section + .section { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
+      .section h2 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      p { margin: 0 0 10px; font-size: 15px; }
+      ul { margin: 8px 0 0; padding-left: 18px; }
+      ul li { margin: 6px 0; font-size: 15px; }
+      a { color: var(--primary); text-decoration: none; font-weight: 600; }
+      a:hover { text-decoration: underline; }
+      .contact { display: grid; gap: 8px; font-size: 15px; }
+    </style>
   </head>
-  <body style="margin:0; padding:0; background:#f5f7fb; font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#111827;">
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="padding:24px 0;">
-      <tr>
-        <td align="center">
-          <table role="presentation" width="640" cellspacing="0" cellpadding="0" style="background:#ffffff; border-radius:12px; padding:28px; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-            <tr>
-              <td style="padding-bottom:12px;">
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <div style="width:12px; height:12px; border-radius:50%; background:#10b981;"></div>
-                  <div style="font-size:13px; color:#6b7280; text-transform:uppercase; letter-spacing:0.08em;">Application</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding-bottom:8px;">
-                <h1 style="margin:0; font-size:24px; font-weight:700; color:#0f172a;">${escapeHtml(subject || 'Application')}</h1>
-              </td>
-            </tr>
-            <tr>
-              <td style="font-size:15px; color:#111827; padding-top:8px;">
-                ${paragraphs}
-              </td>
-            </tr>
-            <tr>
-              <td style="border-top:1px solid #e5e7eb; padding-top:16px; margin-top:12px;">
-                <p style="margin:0; font-size:13px; color:#6b7280;">Sent via HR Outreach Assistant</p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="banner">
+          <div class="badge">Application</div>
+          <h1>Full Stack Developer – Afaq Ahmad</h1>
+        </div>
+        <div class="content">
+          <div class="section">
+            <p>I’m Afaq Ahmad, a MERN/Next.js developer with 4 years of experience building reliable, secure, high-performance web apps. My core stack: React, Next.js, Node.js, Express, MongoDB, REST APIs.</p>
+          </div>
+
+          <div class="section">
+            <h2>Message</h2>
+            ${paragraphs || '<p style="margin:0 0 10px; color: var(--muted);">Thank you for considering my application.</p>'}
+          </div>
+
+        
+      </div>
+    </div>
   </body>
 </html>`;
 }
+
+  // <div class="section">
+  //         //   <h2>Previous Companies</h2>
+  //         //   <ul>
+  //         //     <li>Connextar</li>
+  //         //     <li>Animmza</li>
+  //         //     <li>Leading Edge</li>
+  //         //   </ul>
+  //         // </div>
+
+  //         // <div class="section">
+  //         //   <h2>Projects</h2>
+  //         //   <ul>
+  //         //     <li><a href="https://www.filequill.com/">FileQuill</a></li>
+  //         //     <li><a href="https://job-markaz.vercel.app/">Job Markaz</a></li>
+  //         //     <li><a href="https://pak-draw-by-afaq.vercel.app/">Pak Draw</a></li>
+  //         //     <li><a href="https://pakhtun-exchange.vercel.app/">Hiring Experts Platform</a></li>
+  //         //     <li><a href="https://afaq-resume.vercel.app/">Portfolio / Resume</a></li>
+  //         //   </ul>
+  //         // </div>
+  //       </div>
 
 function escapeHtml(str) {
   return String(str || '')
